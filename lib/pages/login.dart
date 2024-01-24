@@ -2,6 +2,7 @@ import 'package:esafx/pages/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -48,7 +49,13 @@ class _LoginScreenState extends State<LoginPage> {
             ),
             ElevatedButton(
                 onPressed: navigateToWebView,
-                child: const Text("Go to webview"))
+                child: const Text("Go to webview")),
+            const SizedBox(
+              height: 32,
+            ),
+            ElevatedButton(
+                onPressed: launchSecondApp,
+                child: const Text("Go to another app"))
           ],
         ),
       ),
@@ -73,5 +80,12 @@ class _LoginScreenState extends State<LoginPage> {
   navigateToWebView() {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => const WebViewPage()));
+  }
+
+  Future<void> launchSecondApp() async {
+    String secondAppUrl = "https://esafx.com/";
+    if (!await launchUrl(Uri.parse(secondAppUrl))) {
+      throw Exception('Could not launch $secondAppUrl');
+    }
   }
 }

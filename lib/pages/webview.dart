@@ -14,16 +14,16 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String webUrl = "https://esafx-stg.esafx.biz/";
+    const String deepLinkBaseUrl = "http://esafx.com/";
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.disabled)
       ..setNavigationDelegate(
           NavigationDelegate(onNavigationRequest: (request) {
-        if (request.url.startsWith("https://")) {
-          return NavigationDecision.navigate;
-        } else {
-          _launchUrl(Uri.parse(request
-              .url)); // TODO: once link is available, test if this opens the other app
+        if (request.url.startsWith(deepLinkBaseUrl)) {
+          _launchUrl(Uri.parse(request.url));
           return NavigationDecision.prevent;
+        } else {
+          return NavigationDecision.navigate;
         }
       }))
       ..loadRequest(Uri.parse(webUrl));
