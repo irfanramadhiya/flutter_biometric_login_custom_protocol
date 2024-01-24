@@ -16,7 +16,6 @@ class _LoginScreenState extends State<LoginPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     auth = LocalAuthentication();
     auth.isDeviceSupported().then((isSupported) => setState(() {
@@ -42,7 +41,7 @@ class _LoginScreenState extends State<LoginPage> {
               height: 32,
             ),
             ElevatedButton(
-                onPressed: _authenticate,
+                onPressed: _authenticateBiometrics,
                 child: const Text("Authenticate and go to webview")),
             const SizedBox(
               height: 32,
@@ -56,7 +55,7 @@ class _LoginScreenState extends State<LoginPage> {
     );
   }
 
-  Future<void> _authenticate() async {
+  Future<void> _authenticateBiometrics() async {
     try {
       bool authenticated = await auth.authenticate(
           localizedReason: "login",

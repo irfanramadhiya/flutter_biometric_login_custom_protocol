@@ -27,6 +27,7 @@ class WebViewPage extends StatelessWidget {
         }
       }))
       ..loadRequest(Uri.parse(webUrl));
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
