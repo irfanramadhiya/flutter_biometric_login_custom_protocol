@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -13,7 +14,7 @@ class WebViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String webUrl = "https://esafx-stg.esafx.biz/";
+    String webUrl = dotenv.get("URL_WEBSITE", fallback: "");
     const String deepLinkBaseUrl = "http://esafx.com/";
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.disabled)
@@ -33,7 +34,7 @@ class WebViewPage extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         title: Center(
             child: Image.asset(
-          'assets/images/esafx_logo.png',
+          dotenv.get("LOGO_IMAGE_PATH", fallback: ""),
           height: 40,
         )),
       ),
