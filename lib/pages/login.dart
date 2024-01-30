@@ -50,12 +50,12 @@ class _LoginScreenState extends State<LoginPage> {
             ElevatedButton(
                 onPressed: navigateToWebView,
                 child: const Text("Go to webview")),
-            const SizedBox(
-              height: 32,
-            ),
-            ElevatedButton(
-                onPressed: launchSecondApp,
-                child: const Text("Go to another app"))
+            // const SizedBox(
+            //   height: 32,
+            // ),
+            // ElevatedButton(
+            //     onPressed: launchSecondApp,
+            //     child: const Text("Go to another app"))
           ],
         ),
       ),
@@ -82,10 +82,10 @@ class _LoginScreenState extends State<LoginPage> {
         .push(MaterialPageRoute(builder: (context) => const WebViewPage()));
   }
 
-  Future<void> launchSecondApp() async {
-    String secondAppUrl = "https://esafx.com/";
-    if (!await launchUrl(Uri.parse(secondAppUrl))) {
-      throw Exception('Could not launch $secondAppUrl');
-    }
-  }
+  // Future<void> launchSecondApp() async {
+  //   String secondAppUrl = "https://esafx.com/";
+  //   if (!await launchUrl(Uri.parse(secondAppUrl))) {
+  //     throw Exception('Could not launch $secondAppUrl');
+  //   }
+  // }
 }

@@ -58,6 +58,25 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "default"
+    productFlavors{
+        production{
+            dimension "default"
+            resValue "string", "app_name", "Esafx"
+            applicationIdSuffix ""
+        }
+        staging{
+            dimension "default"
+            resValue "string", "app_name", "Stg Esafx"
+            applicationIdSuffix ".stg"
+        }
+        development{
+            dimension "default"
+            resValue "string", "app_name", "Dev Esafx"
+            applicationIdSuffix ".dev"
+        }
+    }
 }
 
 flutter {

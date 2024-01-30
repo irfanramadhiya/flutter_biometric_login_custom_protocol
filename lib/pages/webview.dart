@@ -15,7 +15,7 @@ class WebViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String webUrl = dotenv.get("URL_WEBSITE", fallback: "");
-    const String deepLinkBaseUrl = "http://esafx.com/";
+    String deepLinkBaseUrl = dotenv.get("BASE_URL_DEEPLINK", fallback: "");
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.disabled)
       ..setNavigationDelegate(
